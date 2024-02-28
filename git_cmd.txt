@@ -1,0 +1,90 @@
+...............................................................................
+....................:Frequently Used:..........................................
+...............................................................................
+git init
+git status
+git add file/folder_name                    //add file to stage area
+git add .                                   //add all files to stage area
+git reset .                                 //unstage  
+git reset --hard                            //discard all local changes
+git stash                                   //save all local changes to stash and clear local area
+git stash drop                              //delete saved stash
+git stash pop                               //bring back saved stash 
+git commit -m 'description'                 //make commit
+git push -u origin master                   //push to remote
+
+git reset HEAD~                             //Undo last commit by keeping the local changes to unstage area
+git stash
+git stash drop
+git reset --hard HEAD~                      //Undo last commit by removing the local changes also
+git push origin master --force-with-lease   //Undo last commit to remote and also remove history of last commit
+
+
+git pull 
+git remote show origin            //print information about remote handle
+
+git reset --hard origin/master    //sync local repo to remote after discarding all local changes
+
+
+.........................................................................
+......................Branching and Merging:.............................
+.........................................................................
+git branch “branch name”                    //Create new branch
+git checkout “branch name”                  //Checkout to branch
+   	                                    //Do things in new branch
+git push -u origin newBranch                // Push to remote repo
+
+git checkout master                         //Merge new branch in master branch
+git merge “branch name”
+git push -u origin master                   //to see the merge in remote repo
+
+git branch -d “branch name”                 // delete from local
+git push origin —delete “branch name”       // delete from remote
+
+
+
+.........................................................................
+.......................Generate SSH key:.................................
+.........................................................................
+step1: On terminal
+	ssh-keygen
+step2: 
+	copy public key from {..../.ssh/id_rsa.pub} to github
+
+
+..........................................................................
+.......................Git Tags:..........................................
+..........................................................................
+Step 1: Checkout the branch where you want to create the tag
+	git checkout master
+
+Step 2: Create tag with some name
+	git tag "tag name"
+	example : git tag v1.0
+	git tag -a v1.0 -m "ver 1 of .."  (to create annotated tags) 
+
+Step 3: Display or Show tags
+	git tag
+	git show v1.0
+	git tag -l “v1.*”
+
+Step 4: Push tags to remote
+	git push origin v1.0
+	git push origin --tags
+	git push --tags 
+	(to push all tags at once)
+
+Step 5: Delete tags (if required only)
+	to delete tags from local :
+	git tag -d v1.0
+	git tag --delete v1.0
+
+	to delete tags from remote :
+	git push origin -d v1.0
+	git push origin --delete v1.0
+	git push origin :v1.0
+
+	to delete multiple tags at once:
+	git tag -d v1.0 v1.1 (local)
+	git push origin -d v1.0 v1.1 (remote)
+

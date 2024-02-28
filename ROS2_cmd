@@ -1,0 +1,12 @@
+# :::::::::::::: ROS2 Commands ::::::::::::::
+
+## Creating Ros Pakage
+cd src
+ros2 pkg create {pkg_name} --build-type ament_{python/cmake} --dependencies {dependencies_list}
+cd .
+colcon build
+
+colcon build --symlink-install        //for not building every time after making changes to the ros python package 
+
+
+
