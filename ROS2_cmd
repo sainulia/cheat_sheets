@@ -1,12 +1,24 @@
 # :::::::::::::: ROS2 Commands ::::::::::::::
 
+
+
+source /opt/ros/humble/setup.bash
+
+
+## Creating workspace
+mkdir -p {path}/workspace_name/src
+mkdir -p ~/ros2_ws/src                       //example
+
 ## Creating Ros Pakage
-cd src
-ros2 pkg create {pkg_name} --build-type ament_{python/cmake} --dependencies {dependencies_list}
+cd ~/ros2_ws/src
+ros2 pkg create {pkg_name} --build-type ament_{python/cmake} --node-name {node_name} --dependencies {dependencies_list} --license Apache-2.0
 cd .
-colcon build
+colcon build								// build all the packages in the workspace
+colcon build --packages-select {pkg_name}   //for building only {pkg_name}       
+colcon build --symlink-install              //for not building every time after making changes to the ros python package 
 
-colcon build --symlink-install        //for not building every time after making changes to the ros python package 
+source install/local_setup.bash             //need to source the workspace for using local packages
 
+## Running node
 
-
+ros2 run {package_name} {node_name}
