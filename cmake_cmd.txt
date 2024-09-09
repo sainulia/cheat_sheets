@@ -1,0 +1,68 @@
+.........................................
+Frequently Used:
+.........................................
+
+cmake -"generator_name" ../"source_dir"/ -D"flag=val"
+cmake --build . --target "target_name"
+
+
+cmake -P <script_name>.cmake              //run cmake file in script mode
+
+
+..........................................
+VARIABLES:
+..........................................
+
+1> Common Variables:
+set(<var_name> "var_val")
+message(${var_name})
+
+
+2> Environment Variables:
+set(ENV{VAR_NAME} "var_val")
+message($ENV{VAR_NAME})
+
+3> Cache Variables:
+set(<cache_var_name> "var_val" CACHE STRING "description" )
+message(${cache_var_name})
+
+4> List Variables:
+Set(<list_name> "val_1" "val_2" .....)
+list(APPEND <list_name> "val" "val" ....)	 // append <list of vals> to <list_name>
+list(LENGTH <list_name> list_length)             //compute length of the <list_name> and set to list_length variable
+list(GET <list_name> [index] list_element)      //get element at [index] position of list_name and store to list_element; 
+												        index starts from 0
+
+
+5> Binary Variables:
+option(<option_var_name> "description string" "initial_val")      // initial_val=ON/OFF; default is OFF
+
+
+..........................................
+COMMANDS:
+..........................................
+
+add_library(<name> [<type>] [EXCLUDE_FROM_ALL] <sources>...)   //
+
+add_executable(<name> <options>... <sources>...)
+
+target_link_libraries(<target>
+                      <PRIVATE|PUBLIC|INTERFACE> <item>...
+                     [<PRIVATE|PUBLIC|INTERFACE> <item>...]...)
+
+
+target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]
+  <INTERFACE|PUBLIC|PRIVATE> [items1...]
+  [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+
+
+target_sources(<target>
+  <INTERFACE|PUBLIC|PRIVATE> [items1...]
+  [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+
+
+
+
+
+
+
